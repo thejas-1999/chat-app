@@ -8,13 +8,15 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.json("Hello world");
 });
 
 app.use("/api/auth", authRoutes);
-connectDb();
 
 app.listen(port, () => {
+  connectDb();
   console.log(`server is running on http://localhost:${port}`);
 });
